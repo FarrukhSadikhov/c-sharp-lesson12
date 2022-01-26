@@ -6,12 +6,10 @@ namespace inter
     {
         static string KEY = "До мажор";
         void Play();
-
     }
     class Guitar : IInstrument
     {
         private int guitarstrun;
-
         public int GuitarStrun
         {
             get { return guitarstrun; }
@@ -42,29 +40,25 @@ namespace inter
             else if (GuitarStrun == 12)
             {
                 Console.WriteLine($"Играет акустичксая гитара {GuitarStrun} {IInstrument.KEY}");
-            }
-          
+            }         
         }
     }
     class Drum : IInstrument
     {
         private int size;
-
         public int Size
         {
             get { return size; }
             set { size = value; }
         }
-
         public void Play()
         {
-            Console.WriteLine($"Играет барабан {Size} см размером");
+            Console.WriteLine($"Играет барабан {Size} см размером {IInstrument.KEY}");
         }
     }
     class Trumped : IInstrument
     {
         private int diametr;
-
         public int Diametr 
         {
             get { return diametr; }
@@ -82,17 +76,18 @@ namespace inter
             Console.WriteLine("Введите число струн 'классическая басс 4''басс 5''классичecская 6''русская 7''электро 8''акустичecкая 12' гитары ");
             Guitar guitar = new Guitar();
             guitar.GuitarStrun = ValidationGuitar();
-            Console.WriteLine("Введите размер барабана от 50см до 200см");
+            Console.WriteLine("Введите размер барабана от 20см до 120см");
             Drum drum = new Drum();
             drum.Size = ValidationDrum();
             Console.WriteLine("Введите диаметр трубы от 10см до 40 см");
             Trumped trumped = new Trumped();
             trumped.Diametr = ValidationTrumped();            
-            IInstrument[] instruments = { guitar, drum, trumped };
+            IInstrument[] instruments = {guitar, drum, trumped };
             for (int i = 0; i < instruments.Length; i++)
             {
                 instruments[i].Play();
             }
+            Console.ReadKey();
         }
         public static int ValidationGuitar()
         {
@@ -128,7 +123,7 @@ namespace inter
             {
                 if (Int32.TryParse(Console.ReadLine(), out n))
                 {
-                    if (n >=50 && n <=200 )
+                    if (n >=20 && n <=120 )
                     {
                         return n;
                     }                                   
